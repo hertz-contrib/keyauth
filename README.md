@@ -32,7 +32,7 @@ func main() {
 	h := server.Default()
 	h.Use(keyauth.New(
 		keyauth.WithContextKey("token"),
-		keyauth.WithKeyLookUp("param:token", ""),
+		keyauth.WithKeyLookUp("query:token", ""),
 	))
 	h.GET("/ping", func(c context.Context, ctx *app.RequestContext) {
 		value, _ := ctx.Get("token")
